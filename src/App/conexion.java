@@ -8,8 +8,7 @@ import java.sql.*;
 public class conexion {
     private static final String URL = "jdbc:mysql://localhost:3306/notiva";
     private static final String USER = "root";
-    private static final String PASSWORD = "";
-
+    private static final String PASSWORD = "1248Skarn@rol%";
 
     public static Connection obtenerConexion() {
         try {
@@ -57,7 +56,7 @@ public class conexion {
         return null;
     }
 
-    // Nuevo método para obtener ruta del avatar por usuario
+    // Obtener ruta del avatar por usuario
     public static String obtenerRutaAvatarPorUsuario(int idUsuario) {
         String ruta = null;
         String sql = "SELECT a.direccion_url FROM usuario u JOIN avatar a ON u.id_avatar = a.id_avatar WHERE u.id_usuario = ?";
@@ -76,7 +75,7 @@ public class conexion {
         return ruta;
     }
 
-    // Nuevo método para actualizar avatar del usuario
+    // Actualizar avatar del usuario
     public static boolean actualizarAvatarUsuario(int idUsuario, int idAvatar) {
         String sql = "UPDATE usuario SET id_avatar = ? WHERE id_usuario = ?";
         try (Connection conn = obtenerConexion();
@@ -91,4 +90,5 @@ public class conexion {
             return false;
         }
     }
+
 }
